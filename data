@@ -1,0 +1,5 @@
+product_name quantity_value quantity_unit price_value price_unit
+pawn 6 pieces 1.20 dollars_each
+bishop 2 pieces 2.10 dollars_each
+rook 13 pieces 4.00 dollars_each
+iron 54 pounds 25.00 dollars_pound
