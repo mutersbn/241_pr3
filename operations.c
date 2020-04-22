@@ -23,7 +23,62 @@ product * CreateStore(product * ptr, product * node)
 
 void AddProduct(product * ptr, product *node)
 {
+	success = false;
+	printf("What would you like to add? (basketballs, iron..)");
+	do{
+		success = scanf("%s", &in_ProductName);
+		if(!success)
+		{
+			printf("Please try an appropriate input.\n");
+		}
+
+	}while(!success);
+
+	success = false;
+	printf("How many would you like to add? (10, 2.5)");
+	do{
+		success = scanf("%s", &quantity);
+		if(!success)
+		{
+			printf("Please try an appropriate input.\n");
+		}
+
+	}while(!success);
 	
+	success = false;
+	printf("What is this item's quantity unit? (lbs, kg..)");
+	do{
+		success = scanf("%s", &unit);
+		if(!success)
+		{
+			printf("Please try an appropriate input.\n");
+		}
+
+	}while(!success);
+	
+	success = false;
+	printf("What is the price per unit? (4.49, 0.80..)");
+	do{
+		success = scanf("%s", &price);
+		if(!success)
+		{
+			printf("Please try an appropriate input.\n");
+		}
+
+	}while(!success);
+	
+	success = false;
+	printf("What is the price's unit? (USD, YEN..) ");
+	do{
+		success = scanf("%s", &price_unit);
+		if(!success)
+		{
+			printf("Please try an appropriate input.\n");
+		}else{
+			
+		}
+
+	}while(!success);
 }
 
 void RemoveItem(product *head, product *node)
