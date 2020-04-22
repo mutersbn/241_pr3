@@ -3,33 +3,25 @@
 #include <string.h>
 #include "operations.h"
 
-product * head = NULL;
-product * node = NULL;
-
-struct Product * CreateStore()
+// ptr is being added to node
+product * CreateStore(product * ptr, product * node)
 {
-	printf("\nCreating linked list with empty headnode.\n");
-	product * ptr = (product*)malloc(sizeof(product));
-	if(ptr == NULL)
-	{
-		printf("\nNode creation failed.\n");
-		return NULL;
-	}
-
+	printf("\nCreating linked list with base content.\n");
+	/*	
 	strcpy(ptr->name, "Product1");
 	ptr->quantity_value = 10;
 	strcpy(ptr->quantity_unit, "Kilograms");
 	ptr->price_value = 100;
 	strcpy(ptr->price_unit, "Yen");
 	ptr->next = NULL;
+	*/
 
-	head = node = ptr;
-
-	printf("Store created.");
+	//printf("Store created.");
+	ShowProducts(ptr);
 	return ptr;
 }
 
-void AddProduct(product **head, product *node)
+void AddProduct(product * ptr, product *node)
 {
 	
 }
@@ -41,7 +33,10 @@ void RemoveItem(product *head, product *node)
 
 float PurchaseProducts(product *head, char product_name[], float q)
 {
-	return 0.0;
+	float price = 0;
+	printf("Would like to purchase %.2f %ss.\n", q, product_name);
+	price = q * head->price_value;
+	return price;
 }
 
 void CheckPrice()
@@ -51,7 +46,19 @@ void CheckPrice()
 
 void ShowProducts(product *head)
 {
-
+	product * current = head;
+	if(current == NULL){
+		printf("Nothing is currently in the store.\n");
+	}
+	while(current != NULL)
+	{
+		printf("Product Name: %s\n", current->name);
+		printf("Quantity: %f\n", current->quantity_value);
+		printf("Units: %s\n", current->quantity_unit);
+		printf("Price: %f\n", current->price_value);
+		printf("Price Unit: %f\n", current->price_unit);
+		current = current->next;
+	}
 }
 
 void Clean()
@@ -71,6 +78,7 @@ void Inventory()
 
 int LoadData(char inf[], product **head)
 {
+
 	return 1;
 }
 
