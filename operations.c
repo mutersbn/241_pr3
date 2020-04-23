@@ -153,7 +153,7 @@ void RemoveItem(product *node)
 float PurchaseProducts(product *head, char product_name[], float q)
 {
 	float price = 0;
-	printf("Would like to purchase %.2f %ss.\n", q, product_name);
+	printf("Would like to purchase %.2f of the item %s.\n", q, product_name);
 	price = q * head->price_value;
 	return price;
 }
