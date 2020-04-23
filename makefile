@@ -15,4 +15,4 @@ gdb:
 	gdb --args $(EXEC)
 
 clean:
-	$(RM) $(EXEC)
+	$(RM) $(EXEC) vgcore.*

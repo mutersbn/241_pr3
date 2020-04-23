@@ -12,8 +12,8 @@ struct Product
 typedef struct Product product;
 
 product * CreateStore();
-void AddProduct(product *head, product *current);
-void RemoveItem(product *head, product *current);
+void AddProduct(product * head);
+void RemoveItem(product *node);
 float PurchaseProducts(product *head, char product[], float q);
 void CheckPrice();
 void ShowProducts(product *head);
