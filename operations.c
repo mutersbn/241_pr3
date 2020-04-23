@@ -36,14 +36,14 @@ void AddProduct(product * head)
 	// Allocate memory for the next product
 	current->next = (product*)malloc(sizeof(product));
 
+	// *** ITEM NAME *** //
 	success = 0;
-	printf("What would you like to add? (basketballs, iron..)");
 	while(!success){
+		printf("What would you like to add? (basketballs, iron..)\t");
 		// Read the user's input into line[]
 		// Then verify that it was read correctly
 		fgets(line, sizeof(line), stdin);
 		sscanf_result = sscanf(line, "%s", &in_ProductName);
-		printf("sscanf_result: %d\n", sscanf_result);
 
 		// If not read correctly, loop back and try again
 		if((sscanf_result == 0) || (sscanf_result == EOF))
@@ -56,63 +56,91 @@ void AddProduct(product * head)
 			strcpy(current->next->name, in_ProductName);
 		}
 	}
-/*
-	success = false;
-	printf("How many would you like to add? (10, 2.5)");
-	do{
-		success = scanf("%f", &in_QuantityValue);
-		if(!success)
+
+	// *** ITEM AMOUNT *** //
+	success = 0;
+	while(!success){
+		printf("How many of this item would you like to add? (10, 2.5..)\t");
+		// Read the user's input into line[]
+		// Then verify that it was read correctly
+		fgets(line, sizeof(line), stdin);
+		sscanf_result = sscanf(line, "%.2f", &in_QuantityValue);
+
+		// If not read correctly, loop back and try again
+		if((sscanf_result == 0) || (sscanf_result == EOF))
 		{
 			printf("Please try an appropriate input.\n");
-		}else
+			success = 0;
+		} else
 		{
-			current->next->quantity_value = in_QuantityValue;
+			success = 1;
+			strcpy(current->next->name, in_QuantityValue);
 		}
+	}
 
-	}while(!success);
-	
-	success = false;
-	printf("What is this item's quantity unit? (lbs, kg..)");
-	do{
-		success = scanf("%s", &in_QuantityUnit);
-		if(!success)
+	// *** ITEM UNIT *** //
+	success = 0;
+	while(!success){
+		printf("What is this item's unit? (kg, lbs..)\t");
+		// Read the user's input into line[]
+		// Then verify that it was read correctly
+		fgets(line, sizeof(line), stdin);
+		sscanf_result = sscanf(line, "%s", &in_QuantityUnit);
+
+		// If not read correctly, loop back and try again
+		if((sscanf_result == 0) || (sscanf_result == EOF))
 		{
 			printf("Please try an appropriate input.\n");
-		}else
+			success = 0;
+		} else
 		{
-			strcpy(current->next->quantity_unit, in_QuantityUnit);
+			success = 1;
+			strcpy(current->next->name, in_QuantityUnit);
 		}
+	}
 
-	}while(!success);
-	
-	success = false;
-	printf("What is the price per unit? (4.49, 0.80..)");
-	do{
-		success = scanf("%f", &in_PriceValue);
-		if(!success)
+	// *** ITEM PRICE *** //
+	success = 0;
+	while(!success){
+		printf("What is the price per unit? (4.49, 0.80..)\t");
+		// Read the user's input into line[]
+		// Then verify that it was read correctly
+		fgets(line, sizeof(line), stdin);
+		sscanf_result = sscanf(line, "%.2f", &in_PriceValue);
+
+		// If not read correctly, loop back and try again
+		if((sscanf_result == 0) || (sscanf_result == EOF))
 		{
 			printf("Please try an appropriate input.\n");
-		}else
+			success = 0;
+		} else
 		{
-			current->next->price_value = in_PriceValue;
+			success = 1;
+			strcpy(current->next->name, in_PriceValue);
 		}
+	}
 
-	}while(!success);
-	
-	success = false;
-	printf("What is the price's unit? (USD, YEN..) ");
-	do{
-		success = scanf("%s", &in_PriceUnit);
-		if(!success)
+	// *** PRICE UNIT *** //
+	success = 0;
+	while(!success){
+		printf("What is the price unit? (USD, EUR..)\t");
+		// Read the user's input into line[]
+		// Then verify that it was read correctly
+		fgets(line, sizeof(line), stdin);
+		sscanf_result = sscanf(line, "%s", &in_PriceUnit);
+
+		// If not read correctly, loop back and try again
+		if((sscanf_result == 0) || (sscanf_result == EOF))
 		{
 			printf("Please try an appropriate input.\n");
-		}else
+			success = 0;
+		} else
 		{
-			strcpy(current->next->price_unit, in_PriceUnit);
+			success = 1;
+			strcpy(current->next->name, in_PriceValue);
 		}
+	}
 
-	}while(!success);
-*/
 	current->next->next = NULL;
 	printf("Item added to store.\n");
 }
