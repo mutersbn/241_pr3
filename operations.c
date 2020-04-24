@@ -564,7 +564,7 @@ void PrintProduct(product *node)
 
 void Inventory(product **head)
 {
-	printf("Total amount money made so far: %.2f\n");
+	printf("Total amount money made so far: %.2f\n", total_income);
 	printf("--------------------------------------\n");
 	printf("Available Products in store:\n");
 	printf("--------------------------------------\n");
