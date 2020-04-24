@@ -44,6 +44,7 @@ void AddProduct(product * head)
 		// Then verify that it was read correctly
 		fgets(line, sizeof(line), stdin);
 		sscanf_result = sscanf(line, "%s", &in_ProductName);
+		printf("product name: %s\n", in_ProductName);
 
 		// If not read correctly, loop back and try again
 		if((sscanf_result == 0) || (sscanf_result == EOF))
@@ -64,7 +65,8 @@ void AddProduct(product * head)
 		// Read the user's input into line[]
 		// Then verify that it was read correctly
 		fgets(line, sizeof(line), stdin);
-		sscanf_result = sscanf(line, "%.2f", &in_QuantityValue);
+		sscanf_result = sscanf(line, "%f", &in_QuantityValue);
+		printf("quantity value: %.2f\n", in_QuantityValue);
 
 		// If not read correctly, loop back and try again
 		if((sscanf_result == 0) || (sscanf_result == EOF))
@@ -74,7 +76,7 @@ void AddProduct(product * head)
 		} else
 		{
 			success = 1;
-			strcpy(current->next->name, in_QuantityValue);
+			current->next->quantity_value = in_QuantityValue;
 		}
 	}
 
@@ -86,6 +88,7 @@ void AddProduct(product * head)
 		// Then verify that it was read correctly
 		fgets(line, sizeof(line), stdin);
 		sscanf_result = sscanf(line, "%s", &in_QuantityUnit);
+		//printf("quantity unit: %s\n", in_QuantityUnit);
 
 		// If not read correctly, loop back and try again
 		if((sscanf_result == 0) || (sscanf_result == EOF))
@@ -95,7 +98,7 @@ void AddProduct(product * head)
 		} else
 		{
 			success = 1;
-			strcpy(current->next->name, in_QuantityUnit);
+			strcpy(current->next->quantity_unit, in_QuantityUnit);
 		}
 	}
 
@@ -106,7 +109,7 @@ void AddProduct(product * head)
 		// Read the user's input into line[]
 		// Then verify that it was read correctly
 		fgets(line, sizeof(line), stdin);
-		sscanf_result = sscanf(line, "%.2f", &in_PriceValue);
+		sscanf_result = sscanf(line, "%f", &in_PriceValue);
 
 		// If not read correctly, loop back and try again
 		if((sscanf_result == 0) || (sscanf_result == EOF))
@@ -116,7 +119,7 @@ void AddProduct(product * head)
 		} else
 		{
 			success = 1;
-			strcpy(current->next->name, in_PriceValue);
+			current->next->price_value = in_PriceValue;
 		}
 	}
 
@@ -137,7 +140,7 @@ void AddProduct(product * head)
 		} else
 		{
 			success = 1;
-			strcpy(current->next->name, in_PriceValue);
+			strcpy(current->next->price_unit, in_PriceUnit);
 		}
 	}
 
