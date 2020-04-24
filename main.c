@@ -58,53 +58,7 @@ int main()
 				break;
 			case 2:
 				printf("2: Purchase product from store\n");
-				char in_ProductName[N];
-				
-				// Scan until a string is returned
-				success = false;
-				printf("What would you like to purchase? ");
-				do{
-					success = scanf("%s", &in_ProductName);
-					if(!success)
-					{
-						printf("Please try an appropriate input.\n");
-					}
-				}while(!success);
-				
-				// scan until current node is null
-				while(current != NULL)
-				{
-					if(current->name == in_ProductName)
-					{
-						success = false; // Reset success determinate
-						printf("How many %s would you like to purchase? ", in_ProductName);
-						do{
-							success = scanf("%f", &quantity);
-						}while(!success);
-					}
-					current = current->next;
-				}
-
-				if(!success)
-				{
-					printf("There is no product in our store called %s.\n",in_ProductName);
-					printf("Would you like to choose another product? (y or n) ");
-					success = false;
-					do{
-						scanf("%c", &yn);
-						if(yn == 'y' || yn == 'n')
-						{
-							success = true;
-						} else
-						{
-							printf("\nInvalid response. Please enter 'y' or 'n'.\n");
-						}
-					}while(!success);
-				}
-
-				
-				float price = PurchaseProducts(head, in_ProductName, quantity);
-				
+				PurchaseProducts(head);
 				break;
 			case 3:
 				printf("3: Check price of a product\n");

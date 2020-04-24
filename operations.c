@@ -153,12 +153,92 @@ void RemoveItem(product *node)
 
 }
 
-float PurchaseProducts(product *head, char product_name[], float q)
+float PurchaseProducts(product *head)
 {
-	float price = 0;
-	printf("Would like to purchase %.2f of the item %s.\n", q, product_name);
-	price = q * head->price_value;
-	return price;
+	float quantity;
+	char in_ProductName[N], yn[2];
+	bool product_found = false;
+				
+	// *** ITEM NAME *** //
+	success = 0;
+	while(!success){
+		printf("What would you like to purchase?\t");
+		// Read the user's input into line[]
+		// Then verify that it was read correctly
+		fgets(line, sizeof(line), stdin);
+		sscanf_result = sscanf(line, "%s", &in_ProductName);
+		printf("product name: %s\n", in_ProductName);
+
+		// If not read correctly, loop back and try again
+		if((sscanf_result == 0) || (sscanf_result == EOF))
+		{
+			printf("Please try an appropriate input.\n");
+			success = 0;
+		} else
+		{
+			success = 1; // exit loop
+		}
+	}
+	
+	// Loop through all nodes in the system
+	while(current != NULL)
+	{
+		// If the current node is the product being purchased
+		if(current->name == in_ProductName)
+		{
+			// *** NUMBER BEING PURCHASED *** //
+			success = 0;
+			while(!success){
+				printf("How many would you like to purchase?\t");
+				// Read the user's input into line[]
+				// Then verify that it was read correctly
+				fgets(line, sizeof(line), stdin);
+				sscanf_result = sscanf(line, "%f", &quantity);
+
+				// If not read correctly, loop back and try again
+				if((sscanf_result == 0) || (sscanf_result == EOF))
+				{
+					printf("Please try an appropriate input.\n");
+					success = 0;
+				} else
+				{
+					RemoveItem(in_ProductName, quantity);
+					success = 1;
+				}
+			}
+			product_found = true;
+		}
+		current = current->next;
+	}
+
+	if(!product_found)
+	{
+		printf("There is no product in our store called %s.\n",in_ProductName);
+		printf("Would you like to choose another product? (y or n) ");
+		// *** NUMBER BEING PURCHASED *** //
+		success = 0;
+		while(!success){
+			printf("How many would you like to purchase?\t");
+			// Read the user's input into line[]
+			// Then verify that it was read correctly
+			fgets(line, sizeof(line), stdin);
+			sscanf_result = sscanf(line, "%s", &yn);
+
+			// If not read correctly, loop back and try again
+			if((sscanf_result == 0) || (sscanf_result == EOF))
+			{
+				printf("Please try an appropriate input.\n");
+				success = 0;
+			} else
+			{
+				if(yn == "y")
+				{
+					PurchaseProducts(head);
+				}
+				success = 1;
+			}
+		}
+	}
 }
 
 void CheckPrice()
