@@ -9,8 +9,6 @@
 #include <stdbool.h>
 #include "operations.h"
 
-
-
 int main()
 {
 	int selection = 0, sscanf_result = 0;
@@ -18,14 +16,9 @@ int main()
 	float quantity;
 	bool success = false, swExit = false;
 	product *head = NULL;
-	product *current = NULL;
 	product *ptr = NULL;
 
-	head = (product*)malloc(sizeof(product));
-	current = (product*)malloc(sizeof(product));
-	ptr = (product*)malloc(sizeof(product));
-
-	//head = current = CreateStore(ptr, head); // set head and current to the first node
+	CreateStore(&head); // set head and current to the first node
 
 	while(!swExit)
 	{
@@ -54,15 +47,15 @@ int main()
 		{
 			case 1:
 				printf("1: Add product to store\n");
-				AddProduct(head);
+				AddProduct(&head);
 				break;
 			case 2:
 				printf("2: Purchase product from store\n");
-				PurchaseProducts(head);
+				PurchaseProducts(&head);
 				break;
 			case 3:
 				printf("3: Check price of a product\n");
-				CheckPrice();
+				CheckPrice(&head);
 				break;
 			case 4:
 				printf("4: Show products in the store\n");
@@ -70,15 +63,15 @@ int main()
 				break;
 			case 5:
 				printf("5: Clean up a product from store\n");
-				Clean();
+				RemoveItem(&head, FindProduct(&head, ""));
 				break;
 			case 6:
 				printf("6: Find product\n");
-				//FindProduct(product *store, char p[]);
+				PrintProduct(FindProduct(&head, ""));
 				break;
 			case 7:
 				printf("7: Inventory\n");
-				Inventory();
+				Inventory(&head);
 				break;
 			case 8:
 				printf("8: Thank you for stopping by!\n");
@@ -92,7 +85,6 @@ int main()
 	}
 
 	free(head);
-	free(current);
 	free(ptr);
 
 	return 0;
